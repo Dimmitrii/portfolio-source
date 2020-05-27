@@ -21,3 +21,7 @@ f
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# some components 
+/src/components/ToDoList
+/src/redux/toDoList

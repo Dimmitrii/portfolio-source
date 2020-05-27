@@ -8,7 +8,7 @@ const PreviewList = (props)=>{
     });
     return(
         <>
-        {videos}
+        <div style={{margin:"0 auto",width:"730px"}}>{videos}</div>
         </>
     );
 }

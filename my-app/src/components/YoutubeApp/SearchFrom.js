@@ -21,7 +21,7 @@ class Searchform extends React.Component{
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="" value={this.state.query} onChange={this.handleChange}/>
                 <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1" onClick={this.handleClick}>Button</button>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon1" onClick={this.handleClick}>Искать</button>
                 </div>
             </div>
         );

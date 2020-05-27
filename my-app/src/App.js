@@ -19,15 +19,17 @@ import RegisterPage from './components/Auth/Register/Page';
 import PrivateRoute from './PrivateRoute';
 import CoctailsPage from "./components/Coctails/Page";
 import CarsListPage from "./components/Cars/ListPage";
+import ToDoListPage from "./components/ToDoList/Page";
+
 
 const App = (props) => {
     return(
         <>
         <ClickCounter/>  
         <Route path="/"  render = {props => <NavBar {...props}
-        items={[{text:"Forecast",path:"/forecast"},{text:"Youtube",path:"./youtube"},{text:"Cats",path:"/cats"},
-        {text:"Tech",path:"/tech"},{text:"Favorite Tech",path:"/favoritetech"},{text:"Posts",path:"/posts"},{text:"memes",path:"./memes"},
-        {text:"Coctails",path:"./coctails"},{text:"Cars",path:"/cars"},{text:"register",path:"./register"}]}/>}/>
+        items={[{text:"Forecast",path:"/forecast"},{text:"Youtube",path:"/youtube"},{text:"Cats",path:"/cats"},
+        {text:"Tech",path:"/tech"},{text:"Favorite Tech",path:"/favoritetech"},{text:"Posts",path:"/posts"},{text:"memes",path:"/memes"},
+        {text:"Coctails",path:"/coctails"},{text:"Cars",path:"/cars"},{text:"ToDoList",path:"/todolist"},{text:"register",path:"/register"}]}/>}/>
         <PrivateRoute path="/forecast"  component = {WeatherApp}/>
         <PrivateRoute path="/youtube" component = {YoutubeApp}/>
         <PrivateRoute path="/cats" component = {CatsApp} />
@@ -43,6 +45,7 @@ const App = (props) => {
             <PrivateRoute path="/posts" component = {PostListPage} />
         </Switch>
         <PrivateRoute path="/coctails" component={CoctailsPage}/>
+        <PrivateRoute path="/todolist" component={ToDoListPage}/>
         {/* <CarsListPage/> */}
         {/* <div onClick={()=>{props.fetchCars()}}> Проверить КОКТЕЛИ</div>
         <div onClick={()=>{props.fetchDict()}}> Проверить КОКТЕЛЬ</div> */}

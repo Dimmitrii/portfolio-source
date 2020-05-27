@@ -17,6 +17,7 @@ function withAuthMethods(Component) {
         console.log(data);
         
         // helpers/auth.js setAuthInformation
+        // auth.setAuthInformation(Math.round(Math.random*1000));
         auth.setAuthInformation(data.token);
 
         // редирект на главную страницу
