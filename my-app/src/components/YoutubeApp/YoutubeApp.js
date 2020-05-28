@@ -3,8 +3,11 @@ import React from "react";
 import SearchForm from "./SearchFrom";
 import PreviewList from "./PreviewList";
 import YoutubePlayer from "./YoutubePlayer";
+
+import youtubeKey from "keys";
+
 const axios = require('axios').default;
-const youtubeUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCAY1GNH5AYSiDptYbAcj3QML5Q3LBIcug&q="
+const youtubeUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${youtubeKey}&q=`
 
 class YoutubeApp extends React.Component{
     state={

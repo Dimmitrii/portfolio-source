@@ -1,33 +1,54 @@
-import React,{useState,useEffect} from 'react';
+import React,{ useState, useEffect, useRef } from 'react';
+import { connect } from "react-redux";
 
-const websocket = new WebSocket("ws://localhost:3002");
+import { loadingChat, addUser } from "redux/chat/action";
 
-function Chat() {
-    const [messages,setMesages] = useState([]);
-    const [message,setMesage] = useState([]);
-    // useEffect(()=>{
-    //     websocket.addEventListener("message",(message)=>{
-    //     console.log(message.data);
-    //     setMesages(messages=> [...messages,message.data] ); 
-    // })},[]);
-    websocket.onmessage = (message)=>{
-        console.log(message.data)
+import ChatWindow from "./ChatWindow";
+
+document.body.style.backgroundColor="#edeef0";
+
+function Chat(props) {
+    const [user,setUser] = useState("");
+    
+    const inputRef = useRef();
+
+    useEffect(()=>{
+        console.log(props.isLoaded);
+        inputRef.current.focus();
+    },[]);
+
+    const addUserOnEnter = (e)=>{
+        if(e.keyCode === 13){
+            addUser();
+        }
     }
-    const onClick = ()=>{
-        websocket.send(JSON.stringify({type:"UPDATE_TASK",payload:{id:61270913,isDone:true,text:message}}));
-        websocket.send(JSON.stringify({type:"GET_TASKS"}));
-        // websocket.send(JSON.stringify({type:"DELETE_TASK",payload:{id:21692819}}));
+
+    const addUser = ()=>{
+        props.loadingChat(true)
+        console.log(user);
+        props.addUser(user);
+        setUser("");
     }
     return (
-        <div>
-            <ul style={{listStyle:"none"}}>
-                {/* {console.log(messages)} */}
-                {messages.map((item,index)=><li key={index}>{item}</li>)}
-            </ul>
-            <input onChange={(e)=>{setMesage(e.target.value)}}/>
-            <button onClick={onClick}>Отправить</button>
+        <div style={{width:"730px",margin:"0 auto"}}>
+            {props.isLoaded?
+            <ChatWindow/>
+            :
+            <>
+            <input ref={inputRef} onKeyDown={addUserOnEnter} style={{width:"500px",float:"left"}} type="text" className="form-control" placeholder="" value={user} onChange={(e)=>{setUser(e.target.value)}}/>
+            <button className="btn btn-success" onClick = {()=>{addUser()}}>Write yor nickname for chat</button>
+            </>}
         </div>
     )
 }
 
-export default Chat;
+const actions = { loadingChat, addUser }
+
+const mapStateToProps = (state)=>{
+    return{
+        isLoaded: state.chat.isLoadedChat,
+    }
+}
+
+export default connect(mapStateToProps,actions)(Chat);
+

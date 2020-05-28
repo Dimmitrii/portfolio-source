@@ -5,14 +5,14 @@ import techReducer from './tech/reducer';
 import { postReducer } from './post/reducer';
 import { coctailsReducer } from "./coctails/reducer";
 import { carsReducer } from "./cars/reducer";
-import { toDoListReducer } from "./toDoList/reducer";
+import { chatReducer } from "./chat/reducer";
  
 const reducers = combineReducers({
   cars: carsReducer,
   tech: techReducer,
   post: postReducer,
   coctails: coctailsReducer,
-  toDoList: toDoListReducer,
+  chat: chatReducer,
 });
 
 const middlewares = applyMiddleware(reduxThunk);
