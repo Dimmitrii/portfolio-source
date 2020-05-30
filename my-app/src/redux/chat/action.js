@@ -36,6 +36,9 @@ export const loadingChat = (isLoaded) => async (dispatch)=>{
             webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
             webSocket.send(JSON.stringify({type:"GET_USERS"}));
             dispatch({type:actions.loadingChat,payload:isLoaded});
+            setInterval(()=>{
+                webSocket.send(JSON.stringify({}))
+            },50000)
         });
     }
 }
