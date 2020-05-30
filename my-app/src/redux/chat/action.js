@@ -1,8 +1,8 @@
-const webSocket = new WebSocket("ws://hidden-brushlands-96911.herokuapp.com");
+const webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
 
-setInterval(()=>{
-    console.log(webSocket.readyState);
-},1000)
+// setInterval(()=>{
+//     console.log(webSocket.readyState);
+// },1000)
 
 export const actions = {
     loadingChat:"LOADING",
@@ -18,7 +18,7 @@ export const actions = {
 export const loadingChat = (isLoaded) => async (dispatch)=>{
     if(webSocket.readyState === 1){
         webSocket.addEventListener("message",(message)=>{
-            console.log(JSON.parse(message.data));
+            // console.log(JSON.parse(message.data));
             dispatch(JSON.parse(message.data));
         });
         webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
@@ -31,7 +31,7 @@ export const loadingChat = (isLoaded) => async (dispatch)=>{
     }else if(webSocket.readyState === 0){
         webSocket.addEventListener("opne",()=>{
             webSocket.addEventListener("message",(message)=>{
-                console.log(JSON.parse(message.data));
+                // console.log(JSON.parse(message.data));
                 dispatch(JSON.parse(message.data));
             });
             webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
@@ -54,7 +54,7 @@ export const loadingChat = (isLoaded) => async (dispatch)=>{
 // }
 
 export const addMessage = (userName,text) => async()=>{
-    console.log(text);
+    // console.log(text);
     webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
 }
 
