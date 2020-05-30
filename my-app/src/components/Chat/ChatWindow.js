@@ -128,13 +128,14 @@ function ChatWindow(props) {
 
     useEffect(()=>{
         textAreaRef.current.focus();
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
     },[]);
 
     useEffect(()=>{
-        console.log(2);
+        console.log(555555555555555555555555555555);
         console.log(containerRef.current.scrollHeight);
         // setTimeout(()=>{
-            containerRef.current.scrollTo(0,containerRef.current.scrollHeight)
+            containerRef.current.scrollTop = containerRef.current.scrollHeight;
         // },0)
     },[props.messages.length]);
 

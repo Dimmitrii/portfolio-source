@@ -14,7 +14,9 @@ function Chat(props) {
 
     useEffect(()=>{
         console.log(props.isLoaded);
-        inputRef.current.focus();
+        if(!props.isLoaded){
+            inputRef.current.focus();
+        }
     },[]);
 
     const addUserOnEnter = (e)=>{
