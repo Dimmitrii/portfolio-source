@@ -24,6 +24,7 @@ export const loadingChat = (isLoaded) => async (dispatch)=>{
         webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
         webSocket.send(JSON.stringify({type:"GET_USERS"}));
         dispatch({type:actions.loadingChat,payload:isLoaded});
+        // костыль изз-за того что я не знаб как бороться с тем что хероку убивает сокет через 55 секунд
         setInterval(()=>{
             webSocket.send(JSON.stringify({}))
         },50000)
@@ -36,7 +37,7 @@ export const loadingChat = (isLoaded) => async (dispatch)=>{
             webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
             webSocket.send(JSON.stringify({type:"GET_USERS"}));
             dispatch({type:actions.loadingChat,payload:isLoaded});
-            // костыль изз-за того что я не знаб как бороться с тем что хероку убивает сокет через 55 секунд
+            // костыль изз-за того что я не знаб как бороться с тем что хероку убивает сокет через 55 секунд 
             setInterval(()=>{
                 webSocket.send(JSON.stringify({}))
             },50000)
