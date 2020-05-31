@@ -1,8 +1,18 @@
-const webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+let webSocket;
 
-// setInterval(()=>{
-//     console.log(webSocket.readyState);
-// },1000)
+const dispatchMessage = (dispatch)=>{
+    webSocket.addEventListener("message",(message)=>{
+        console.log(JSON.parse(message.data));
+        dispatch(JSON.parse(message.data));
+    });
+}
+
+const load = (dispatch,isLoaded)=>{
+    dispatchMessage(dispatch);
+    webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
+    webSocket.send(JSON.stringify({type:"GET_USERS"}));
+    dispatch({type:actions.loadingChat,payload:isLoaded});
+}
 
 export const actions = {
     loadingChat:"LOADING",
@@ -16,46 +26,33 @@ export const actions = {
 }
 
 export const loadingChat = (isLoaded) => async (dispatch)=>{
+    webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+    setInterval(()=>{
+        console.log(webSocket.readyState);
+    },1000)
     if(webSocket.readyState === 1){
-        webSocket.addEventListener("message",(message)=>{
-            // console.log(JSON.parse(message.data));
-            dispatch(JSON.parse(message.data));
-        });
-        webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
-        webSocket.send(JSON.stringify({type:"GET_USERS"}));
-        dispatch({type:actions.loadingChat,payload:isLoaded});
-        // костыль изз-за того что я не знаб как бороться с тем что хероку убивает сокет через 55 секунд
-        setInterval(()=>{
-            webSocket.send(JSON.stringify({}))
-        },50000)
+        console.log("load instantly");
+        load(dispatch,isLoaded);
     }else if(webSocket.readyState === 0){
-        webSocket.addEventListener("opne",()=>{
-            webSocket.addEventListener("message",(message)=>{
-                // console.log(JSON.parse(message.data));
-                dispatch(JSON.parse(message.data));
-            });
-            webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
-            webSocket.send(JSON.stringify({type:"GET_USERS"}));
-            dispatch({type:actions.loadingChat,payload:isLoaded});
-            // костыль изз-за того что я не знаб как бороться с тем что хероку убивает сокет через 55 секунд 
-            setInterval(()=>{
-                webSocket.send(JSON.stringify({}))
-            },50000)
+        console.log("load with delay");
+        webSocket.addEventListener("open",()=>{
+            load(dispatch,isLoaded);
         });
     }
 }
 
-// export const getTasks = () => (dispatch)=>{
-    
-// }
-
-// export const getTasks = () => ()=>{
-//    webSocket.onopen = ()=> {webSocket.send(JSON.stringify({type:"GET_TASKS"}))}
-// }
-
-export const addMessage = (userName,text) => async()=>{
-    // console.log(text);
-    webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
+export const addMessage = (userName,text) => async(dispatch)=>{
+    if(webSocket.readyState === 3){
+        webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+        dispatchMessage(dispatch);
+    }
+    if(webSocket.readyState === 1){
+        webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
+    }else if(webSocket.readyState === 0){
+        webSocket.addEventListener("open",()=>{
+            webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
+        });
+    }
 }
 
 export const deleteMessage = (userName,id) => async()=>{
@@ -67,9 +64,10 @@ export const updateMessage = (id, text, userName) => async()=>{
 }
 
 export const addUser = (userName) => async(dispatch)=>{
+    console.log(webSocket);
     if(webSocket.readyState === 1){
-    webSocket.send(JSON.stringify({type:"ADD_USER",payload:{userName}}))
-    dispatch({type:actions.initialUser,payload:userName})
+        webSocket.send(JSON.stringify({type:"ADD_USER",payload:{userName}}))
+        dispatch({type:actions.initialUser,payload:userName})
     }
     if(webSocket.readyState === 0){
         webSocket.addEventListener("open",()=>{
@@ -77,7 +75,5 @@ export const addUser = (userName) => async(dispatch)=>{
             dispatch({type:actions.initialUser,payload:userName})
         });
     }
-    // dispatch.add
 }
-
 
