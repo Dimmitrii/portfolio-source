@@ -11,11 +11,21 @@ export const actions = {
   toggleEditPost: "TOGGLE_EDIT_POST",
 };
 
+const headers = {
+  headers:{
+    "Access-Control-Allow-Origin":"*",
+  }
+}
+
 // fetchPosts
 export const fetchPosts = () => {
   return async (dispatch) => {
     try {
-      const { data: posts } = await axios(`${config.apiUrl}/posts`)
+      const { data: posts } = await axios(`${config.apiUrl}/posts`,{
+        // headers:{
+        //   origin: "https://jsonplaceholder.typicode.com",
+        // }
+      })
       dispatch({ type: actions.fetchAll, payload: posts });
     } catch (error) {
       console.log(error);
@@ -36,17 +46,17 @@ export const fetchPost = (id) => async (dispatch) => {
 // deletePost
 export const deletePost = (id) => async (dispatch) => {
   try {
-    await axios.delete(`${config.apiUrl}/posts/${id}`);
-    dispatch({ type: actions.delete, payload: id });
-  } catch (error) {
-    console.log(error);
+      await axios.delete(`${config.apiUrl}/posts/${id}`);
+      dispatch({ type: actions.delete, payload: id });
+    } catch (error) {
+      console.log(error);
   }
 }
 
 // addPost POST
 export const addPost = (post) => async (dispatch) => {
   try {
-    const { data: createdPost } = await axios.post(`${config.apiUrl}/posts`, post);
+    const { data: createdPost } = await axios.post(`${config.apiUrl}/posts`,post);
     dispatch({ type: actions.create, payload: createdPost });
   } catch (error) {
     console.log(error);
@@ -56,7 +66,7 @@ export const addPost = (post) => async (dispatch) => {
 // editPost PUT/PATCH
 export const editPost = (post) => async (dispatch) => {
   try {
-    const { data: updatedPost } = await axios.put(`${config.apiUrl}/posts/${post.id}`, post);
+    const { data: updatedPost } = await axios.put(`${config.apiUrl}/posts/${post.id}`,post);
     dispatch({ type: actions.update, payload: updatedPost });
   } catch (error) {
     console.log(error);

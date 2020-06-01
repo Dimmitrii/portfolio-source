@@ -1,5 +1,11 @@
 let webSocket;
 
+const reloadWebsocket = ()=>{
+    webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+    webSocket.addEventListener("close",()=>{
+        reloadWebsocket();
+    });
+}
 const dispatchMessage = (dispatch)=>{
     webSocket.addEventListener("message",(message)=>{
         console.log(JSON.parse(message.data));
@@ -12,6 +18,13 @@ const load = (dispatch,isLoaded)=>{
     webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
     webSocket.send(JSON.stringify({type:"GET_USERS"}));
     dispatch({type:actions.loadingChat,payload:isLoaded});
+    // костыль heroku убивает запрос через 55 секунд если нет запросов , поэтому делаю пустой запрос каждый 50 секунд
+    // setInterval(()=>{
+    //     webSocket.send(JSON.stringify({}))
+    // },50000)
+    // webSocket.addEventListener("close",()=>{
+    //     webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+    // });
 }
 
 export const actions = {
@@ -26,7 +39,8 @@ export const actions = {
 }
 
 export const loadingChat = (isLoaded) => async (dispatch)=>{
-    webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+    // webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+    reloadWebsocket();
     setInterval(()=>{
         console.log(webSocket.readyState);
     },1000)
@@ -42,17 +56,18 @@ export const loadingChat = (isLoaded) => async (dispatch)=>{
 }
 
 export const addMessage = (userName,text) => async(dispatch)=>{
-    if(webSocket.readyState === 3){
-        webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
-        dispatchMessage(dispatch);
-    }
-    if(webSocket.readyState === 1){
-        webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
-    }else if(webSocket.readyState === 0){
-        webSocket.addEventListener("open",()=>{
-            webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
-        });
-    }
+    webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
+    // if(webSocket.readyState === 3){
+    //     webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
+    //     dispatchMessage(dispatch);
+    // }
+    // if(webSocket.readyState === 1){
+    //     webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
+    // }else if(webSocket.readyState === 0){
+    //     webSocket.addEventListener("open",()=>{
+    //         webSocket.send(JSON.stringify({type:"ADD_MESSAGE",payload:{ userName, text }}));
+    //     });
+    // }
 }
 
 export const deleteMessage = (userName,id) => async()=>{

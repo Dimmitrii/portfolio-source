@@ -10,7 +10,12 @@ const getNumbersForPagination = (length,postPerPage,currrentPage)=>{
     }
     console.log(pages);
     console.log(currrentPage);
-    if(currrentPage<3){
+    // console.log(length);
+    if(currrentPage <4 && pages.length<4){
+        console.log("аааааааааааааааааааааааа");
+        return [pages[0],pages[1],pages[2]]
+    }
+    else if(currrentPage<3 && pages.length>3){
         return [pages[0],pages[1],pages[2],"...",pages[pages.length-1]];
     }
     else if(currrentPage<pages[pages.length-2]){
