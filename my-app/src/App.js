@@ -40,10 +40,11 @@ const App = (props) => {
         <PrivateRoute path="/cars" component={CarsListPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
-        <Switch>
-            {/* <PrivateRoute path="/posts/:id" component={PostSinglePage} /> */}
-            {/* <PrivateRoute path="/posts" component = {PostListPage} /> */}
-        </Switch>
+        {/*remove posts becuse api doesnt respone but i didnt touched code for your code review*/}
+        {/* <Switch>
+            <PrivateRoute path="/posts/:id" component={PostSinglePage} />
+            <PrivateRoute path="/posts" component = {PostListPage} />
+        </Switch> */}
         <PrivateRoute path="/coctails" component={CoctailsPage}/>
         <PrivateRoute path="/chat" component={Chat}/>
         {/* <CarsListPage/> */}
