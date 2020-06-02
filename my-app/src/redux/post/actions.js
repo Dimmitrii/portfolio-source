@@ -11,12 +11,6 @@ export const actions = {
   toggleEditPost: "TOGGLE_EDIT_POST",
 };
 
-const headers = {
-  headers:{
-    "Access-Control-Allow-Origin":"*",
-  }
-}
-
 // fetchPosts
 export const fetchPosts = () => {
   return async (dispatch) => {

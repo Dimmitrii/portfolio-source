@@ -28,7 +28,7 @@ const App = (props) => {
         <ClickCounter/>  
         <Route path="/"  render = {props => <NavBar {...props}
         items={[{text:"Forecast",path:"/forecast"},{text:"Youtube",path:"/youtube"},{text:"Cats",path:"/cats"},
-        {text:"Tech",path:"/tech"},{text:"Favorite Tech",path:"/favoritetech"},{text:"memes",path:"/memes"},
+        {text:"Tech",path:"/tech"},{text:"Favorite Tech",path:"/favoritetech"},{text:"Posts",path:"/posts"},{text:"memes",path:"/memes"},
         {text:"Coctails",path:"/coctails"},{text:"Cars",path:"/cars"},{text:"CHAT",path:"/chat"},{text:"register",path:"/register"}]}/>}/>
         <PrivateRoute path="/forecast"  component = {WeatherApp}/>
         <PrivateRoute path="/youtube" component = {YoutubeApp}/>
@@ -41,10 +41,10 @@ const App = (props) => {
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         {/*remove posts becuse api doesnt respone but i didnt touched code for your code review*/}
-        {/* <Switch>
+        <Switch>
             <PrivateRoute path="/posts/:id" component={PostSinglePage} />
             <PrivateRoute path="/posts" component = {PostListPage} />
-        </Switch> */}
+        </Switch>
         <PrivateRoute path="/coctails" component={CoctailsPage}/>
         <PrivateRoute path="/chat" component={Chat}/>
         {/* <CarsListPage/> */}
