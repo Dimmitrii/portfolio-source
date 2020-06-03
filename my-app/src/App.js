@@ -20,7 +20,7 @@ import CarsListPage from "./components/Cars/ListPage";
 import Chat from "./components/Chat/Chat";
 
 
-const App = (props) => {
+const App = () => {
     return(
         <>
         <ClickCounter/>  
@@ -38,7 +38,7 @@ const App = (props) => {
         <PrivateRoute path="/cars" component={CarsListPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
-        {/*remove posts becuse api doesnt respone but i didnt touched code for your code review*/}
+        {/*comment posts becuse api doesnt respone but i didnt touched code for your code review*/}
         {/* <Switch>
             <PrivateRoute path="/posts/:id" component={PostSinglePage} />
             <PrivateRoute path="/posts" component = {PostListPage} />
