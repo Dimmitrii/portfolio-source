@@ -12,13 +12,7 @@ function CarsSettings(props) {
                <p>Состояние автомобиля</p>
                <select defaultValue="Любое"  onChange={props.onChange} title="state">
                     <option value="">Любое</option>
-
-                    {props.dict.state.map(item=>{
-                        return(
-                            <option key={item.id} value={item.id}>{item.name}</option>
-                        )
-                    })}
-
+                    {props.dict.state.map(item=><option key={item.id} value={item.id}>{item.name}</option>)}
                 </select>
 
                 <br/>
@@ -29,13 +23,7 @@ function CarsSettings(props) {
                 <p>Марка автомобиля</p>
                 <select defaultValue="Любая" title="manufacturer" onChange={props.onChange}>
                     <option value="">Любая</option>
-
-                    {props.dict.manufacturer.map(item=>{
-                        return(
-                            <option key={item.id} value={item.name}>{item.name}</option>
-                        )
-                    })}
-
+                    {props.dict.manufacturer.map(item=><option key={item.id} value={item.name}>{item.name}</option>)}
                 </select>
 
                 <p>Тип кузова</p>
