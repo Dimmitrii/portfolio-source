@@ -31,9 +31,9 @@ class Page extends React.Component{
             <div className="card">
                 <h5 className="card-header">{title}</h5>
                 <div className="card-body">
-                    <h5 className="card-title">{price}</h5>
+                    <h5 className="card-title">Price {price}$</h5>
                     <p className="card-text"></p>
-                    <button  className="btn btn-primary" onClick={this.handleClick}>{favorite? "Убрать из избранного" :"Добавить в избранное"}</button>
+                    <button  className="btn btn-primary" onClick={this.handleClick}>{favorite? "Remove from favourite" :"Add to favourite"}</button>
                 </div>
             </div>
         )

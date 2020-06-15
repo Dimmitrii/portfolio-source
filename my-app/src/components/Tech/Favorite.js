@@ -5,10 +5,6 @@ import {addTechToFavoriteAndUnFavorite} from "../../redux/tech/actions";
 import TechFavoriteItem from "./FavoriteItem";
 
 class TechFavorite extends React.Component{
-    state={
-
-    }
-
     render(){
         const favoriteItems = this.props.techList.filter(item=>item.favorite === true);
         // console.log(this.props.techList);
@@ -18,9 +14,9 @@ class TechFavorite extends React.Component{
             );
         });
         return(
-            <>
-                {items}
-            </>
+            <div style={{margin:"0 auto",width:"991px",height:"48px"}}>
+                {favoriteItems.length ? items : <h1 style={{position: "absolute",top: "50%"}}>Add tech to favourite at tech and they will appear here</h1> }
+            </div>
         );
     }
 }

@@ -8,7 +8,7 @@ function CoctailsList(props) {
         return(
             <div key={item.id} className="list-group-item d-flex justify-content-between align-items-center" id={item.id}>
                 <h6>{item.name}</h6>
-                <button id={item.id} type="button" className="btn btn-info">Доп Инфа</button>
+                <button id={item.id} type="button" className="btn btn-info">About</button>
             </div>
         )
     })

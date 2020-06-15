@@ -6,56 +6,54 @@ import {onChange,onChangeCheckBox} from "redux/cars/action";
 function CarsSettings(props) {
     console.log(props);
     return (
-        <div className="float-left">
+        <div style={{ float:"left", width:"260px" }}>
             {props.dict? 
             <>
-               <p>Состояние автомобиля</p>
-               <select defaultValue="Любое"  onChange={props.onChange} title="state">
-                    <option value="">Любое</option>
-                    {props.dict.state.map(item=><option key={item.id} value={item.id}>{item.name}</option>)}
+                <h6 style={{ margin:"20px 0 10px 0" }}>State of car</h6>
+                <select defaultValue="Любое"  onChange={props.onChange} title="state" style={{ width:"260px", height:"30px" }}>
+                    <option value="">Any</option>
+                    {props.dict.state.map(item=><option key={item.id} value={item.id}>{item.id}</option>)}
                 </select>
 
                 <br/>
 
-                <p>Цена</p>
-                <input title="costFrom" placeholder="от" onChange={props.onChange}/><input title="costTo" placeholder="до" onChange={props.onChange}/>
+                <h6 style={{ margin:"20px 0 10px 0" }}>Price</h6>
+                <input title="costFrom" placeholder="от" onChange={props.onChange} style={{ width:"126px", height:"30px" }}/>
+                <input title="costTo" placeholder="до" onChange={props.onChange} style={{ width:"126px", height:"30px" }}/>
 
-                <p>Марка автомобиля</p>
-                <select defaultValue="Любая" title="manufacturer" onChange={props.onChange}>
-                    <option value="">Любая</option>
-                    {props.dict.manufacturer.map(item=><option key={item.id} value={item.name}>{item.name}</option>)}
+                <h6 style={{ margin:"20px 0 10px 0" }}>Car label</h6>
+                <select defaultValue="Любая" title="manufacturer" onChange={props.onChange} style={{ width:"260px", height:"30px" }}>
+                    <option value="">Any</option>
+                    {props.dict.manufacturer.map(item=><option key={item.id} value={item.id}>{item.name}</option>)}
                 </select>
 
-                <p>Тип кузова</p>
-                <select defaultValue="Любой" title="bodyType" onChange={props.onChange}>
-                    <option value="">Любой</option>
-
-                    {props.dict.body_type.map(item=>{
-                        return(
-                            <option key={item.id} value={item.id}>{item.name}</option>
-                        )
-                    })}
-
+                <h6 style={{ margin:"20px 0 10px 0" }}>Body type</h6>
+                <select defaultValue="Любой" title="bodyType" onChange={props.onChange} style={{ width:"260px", height:"30px" }}>
+                    <option value="">Any</option>
+                    {props.dict.body_type.map(item=><option key={item.id} value={item.id}>{item.id}</option>)}
                 </select>
 
-                <p>Коробка Передач</p>
+                <h6 style={{ margin:"20px 0 10px 0" }}>Transmission</h6>
                 {props.dict.transmission.map(item=>{
-                    console.log(item);
-                    return(
-                        <p key={item.id}><label>{item.name}<input type="checkbox"  title={item.id} onChange={props.onChangeCheckBox}/></label></p>
-                    )
+                return(
+                    <div key={item.id}>
+                        <label><input style={{verticalAlign:"middle",width:"15px",height:"15px"}}
+                        type="checkbox" title={item.id} onChange={props.onChangeCheckBox}/> {item.id}</label>
+                    </div>)
                 })}
 
-                <p>Привод</p>
+                <h6 style={{ margin:"20px 0 10px 0" }}>Drivetrain</h6>
                 {props.dict.drivetrain.map(item=>{
-                    console.log(item);
-                    return(
-                        <p key={item.id}><label>{item.name}<input type="checkbox" title={item.id} onChange={props.onChangeCheckBox}/></label></p>
-                    )
+                return(
+                    <div key={item.id}>
+                        <label><input style={{verticalAlign:"middle",width:"15px",height:"15px"}}
+                        type="checkbox" title={item.id} onChange={props.onChangeCheckBox}/> {item.id}</label>
+                    </div>)
                 })}
 
-                <p>Пробег</p>
-                <input title="odometerValueFrom" placeholder="от" onChange={props.onChange}/><input title="odometerValueTo" placeholder="до" onChange={props.onChange}/>
+                <h6 style={{ margin:"20px 0 10px 0" }}>Odometer</h6>
+                <input title="odometerValueFrom" placeholder="от" onChange={props.onChange} style={{ width:"126px", height:"30px" }}/>
+                <input title="odometerValueTo" placeholder="до" onChange={props.onChange} style={{ width:"126px", height:"30px" }}/>
             </>
             : null}
         </div>

@@ -3,6 +3,7 @@ import React from 'react'
 import ListOfCats from "./ListOfCats";
 import SelectedCat from "./SelectedCat";
 import Settings from "./Settings";
+import Spinner from "../common/Spinner";
 
 const axios = require('axios').default;
 const CatsUrl = "https://serene-mesa-35124.herokuapp.com/files";
@@ -13,6 +14,7 @@ class CatsApp extends React.Component {
         cats:[],
         selectedCat:"",
         search:"",
+        isLoaded:false,
     }
 
     componentDidMount(){
@@ -22,7 +24,7 @@ class CatsApp extends React.Component {
             const cats = response.data.data.map(cat=>{
                 return {...cat,isRemoved:false}
             });
-            this.setState({cats})
+            this.setState({cats,isLoaded:true})
         })
         .catch(error=>{
             console.log(error);
@@ -58,15 +60,6 @@ class CatsApp extends React.Component {
         // console.log(value);
     }
 
-    // removeCat = (id)=>{
-    //     let copy = [...this.state.cats];
-    //     const removedCat = copy.filter(item =>item.id === id);
-    //     copy = copy.filter(item =>item.id !== id);
-    //     console.log(removedCat);
-    //     removedCat[0].isRemoved = true;
-    //     this.setState({cats:[...copy,...removedCat]})
-    // }
-
     removeAndUnRemoveCat = (id)=>{
         let copy = [...this.state.cats];
         copy = copy.map(item=>{
@@ -83,11 +76,16 @@ class CatsApp extends React.Component {
         console.log(currentCats);
         console.log(this.state.cats);
         return (
+            <>
+            {this.state.isLoaded?
             <div>
                 <Settings search={this.searchCats} value={this.state.search}/>
                 <ListOfCats cats={currentCats} selectCat={this.selectCat} removeAndUnRemove={this.removeAndUnRemoveCat}/>
                 <SelectedCat selectedCat={this.state.selectedCat}/>
             </div>
+            :
+            <Spinner/>}
+            </>
         )
     }
 }

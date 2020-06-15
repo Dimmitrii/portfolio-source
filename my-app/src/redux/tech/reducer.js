@@ -1,52 +1,52 @@
 const initialTech = [
   {
     id: 1,
-    title: 'Телефон iPhone SE2',
+    title: 'Smartphone iPhone SE2',
     price: 100,
   },
   {
     id: 2,
-    title: 'Телевизор Samsung',
+    title: 'TV Samsung',
     price: 500,
   },
   {
     id: 3,
-    title: 'Приставка PS5',
+    title: 'Game console PS5',
     price: 400,
   },
   {
     id: 4,
-    title: 'Приставка XBOX',
+    title: 'Game console XBOX',
     price: 500,
   },
   {
     id: 5,
-    title: 'Процессор ryzen 2600',
+    title: 'Processor ryzen 2600',
     price: 200,
   },
   {
     id: 6,
-    title: 'Оперативная память DDR4 kingston',
+    title: 'RAM DDR4 kingston',
     price: 50,
   },
   {
     id: 7,
-    title: 'Компютерная мышь Bloody A9',
+    title: 'PC mouse Bloody A9',
     price: 25,
   },
   {
     id: 8,
-    title: 'Клавиатура OCLICK',
+    title: 'Keyboard OCLICK',
     price: 10,
   },
   {
     id: 9,
-    title: 'Материнская плата ASROCK B450 Pro4',
+    title: 'Motherboard ASROCK B450 Pro4',
     price: 100,
   },
   {
     id: 10,
-    title: 'Наушники SVEN AP-U988MV',
+    title: 'Headset SVEN AP-U988MV',
     price: 25,
   },
 ];

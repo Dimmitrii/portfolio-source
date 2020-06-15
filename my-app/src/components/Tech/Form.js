@@ -31,18 +31,18 @@ class Form extends React.Component {
     return (
         <>
             <div className="form-group row">
-              <div className="col-sm-2 col-form-label">Название техники</div>
+              <div className="col-sm-2 col-form-label">Title of tech</div>
               <div className="col-sm-10">
-                  <input type="text" placeholder="Название" className="form-control" name="title" onChange={this.handleChange} value={this.state.title}/>
+                  <input type="text" placeholder="Title" className="form-control" name="title" onChange={this.handleChange} value={this.state.title}/>
               </div>
             </div>
             <div className="form-group row">
-              <div className="col-sm-2 col-form-label">Цена</div>
+              <div className="col-sm-2 col-form-label">Price</div>
               <div className="col-sm-10">
-                  <input type="text" placeholder="Цена" className="form-control" name="price" onChange={this.handleChange} value={this.state.price} />
+                  <input type="text" placeholder="Price" className="form-control" name="price" onChange={this.handleChange} value={this.state.price} />
               </div>
             </div>
-            <input type="submit" className="btn btn-primary float-right" value="Добавить" onClick={this.handleClick}/>
+            <input type="submit" className="btn btn-primary float-right" value="Add tech" onClick={this.handleClick}/>
         </>
     );
   }

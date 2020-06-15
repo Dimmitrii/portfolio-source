@@ -5,6 +5,7 @@ import {fetchCars,fetchDict} from "redux/cars/action";
 
 import CarsList from "./List";
 import CarsSettings from "./Settings";
+import Spinner from "../common/Spinner";
 
 function CarslistPage(props) {
 
@@ -16,10 +17,15 @@ function CarslistPage(props) {
     },[props])
 
     return (
-        <div>
+        <>
+        {props.isLoaded?
+        <div style={{width:"1356px",margin:"0 auto"}}>
             <CarsList/>
             <CarsSettings/>
         </div>
+        :
+        <Spinner/>}
+        </>
     )
 }
 

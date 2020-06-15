@@ -1,15 +1,9 @@
 import React from 'react';
 
 import "./WeatherApp.css";
-import Spinner from "./Spinner";
+import Spinner from "../common/Spinner";
 import WeatherOther from "./WeatherOther";
 import WeatherToday from "./WeatherToday";
-// import YoutubeApp from "../YoutubeApp/YoutubeApp";
-// import NavBar from "../NavBar/NavBar";
-// import CatsApp from "../CatsApp/CatsApp";
-// import TechPage from "../Tech/Page";
-// import TechPages from "../Tech/Pages";
-// import TechFavorite from "../Tech/Favorite";
 
 
 const axios = require('axios').default;
@@ -35,28 +29,19 @@ class WeatherApp extends React.Component {
   render(){
     console.log(this.state);
     return (
-      <div className="App container pt-3">
-        <div className="row">
-          <div className="col-8 offset-2">
+      <>
         {this.state.isData? 
-        <>
-        <WeatherToday forecast={this.state.today}/>
-        <WeatherOther forecast={this.state.days}/>
-        {/* <Route render={props => <NavBar/>} /> */}
-        {/* <Route path="/"  render = {props => <NavBar items={[{text:"Home",path:"/"},{text:"Forecast",path:"/forecast"},{text:"Youtube",path:"./youtube"},{text:"Cats",path:"/cats"},{text:"Tech",path:"/tech"},{text:"Favorite Tech",path:"/favoritetech"}]}/>}/>
-        <Route path="/forecast" render = {props => <WeatherToday forecast={this.state.today}/>}/> 
-        <Route path="/forecast"  render = {props => <WeatherOther forecast={this.state.days}/>}/>
-        <Route path="/youtube" render = {props => <YoutubeApp/>}/>
-        <Route path="/cats" component = {CatsApp} />
-        <Route path="/tech" exact component = {TechPages}/>
-        <Route path="/tech/:id" component = {TechPage}/>
-        <Route path="/favoritetech" component = {TechFavorite}/> */}
-        </>
-        : 
+        <div className="App container pt-3">
+          <div className="row">
+            <div className="col-8 offset-2">
+              <WeatherToday forecast={this.state.today}/>
+              <WeatherOther forecast={this.state.days}/>
+            </div>
+          </div>
+        </div>
+        :
         <Spinner/>}
-      </div>
-      </div>
-      </div>
+      </>
     );
   }
 }

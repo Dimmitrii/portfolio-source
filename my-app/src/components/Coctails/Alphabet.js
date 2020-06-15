@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {connect} from "react-redux";
 
 import {fetchAll} from "redux/coctails/actions"; 
@@ -8,14 +8,18 @@ import {fetchAll} from "redux/coctails/actions";
 
 const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y","Z"];
 
-function CoctailsAlphabet(props) {
+const style = {fontSize:"26px",width:"45px",float:"left",textAlign:"center",cursor:"pointer"};
+
+function CoctailsAlphabet(props){ 
+    const [activeLetter,setActiveLetter] = useState();
+
     const items = alphabet.map((item,index)=>{
         return(
-            <span key={index} style={{fontSize:"26px",margin:"0px 15px 0px 15px"}}>{item.toLowerCase()}</span>
+            <div key={index} style={activeLetter===item.toLowerCase() ? {backgroundColor:"#17a2b8",...style} : style}>{item.toLowerCase()}</div>
         )
     })
     return (
-        <div style={{margin:"0 auto",width:"1200px"} } onClick={(e)=>{props.fetchAll(e.target.textContent)}}>
+        <div style={{margin:"0 auto",width:"1200px"} } onClick={(e)=>{props.fetchAll(e.target.textContent);setActiveLetter(e.target.textContent)}}>
             {items}
         </div>
     )

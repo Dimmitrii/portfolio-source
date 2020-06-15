@@ -21,7 +21,7 @@ class CoctailsPage extends React.Component {
         console.log(copy);
 
         if(search !== ""){
-             copy = copy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()) );
+            copy = copy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()) );
         }
         return copy;
     }

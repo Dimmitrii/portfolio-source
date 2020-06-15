@@ -15,15 +15,10 @@ function ChatWindow(props) {
 
     useEffect(()=>{
         textAreaRef.current.focus();
-        containerRef.current.scrollTop = containerRef.current.scrollHeight;
     },[]);
 
     useEffect(()=>{
-        console.log(555555555555555555555555555555);
-        console.log(containerRef.current.scrollHeight);
-        // setTimeout(()=>{
-            containerRef.current.scrollTop = containerRef.current.scrollHeight;
-        // },0)
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
     },[props.messages.length]);
 
     const addMessage = (userName,text)=>{

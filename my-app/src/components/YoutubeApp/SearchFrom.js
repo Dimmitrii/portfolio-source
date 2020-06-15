@@ -4,24 +4,38 @@ class Searchform extends React.Component{
     state={
         query:"",
     }
+
+    inputRef = React.createRef();
+
+    componentDidMount(){
+        this.inputRef.current.focus();
+    }
+
     handleChange = (e)=>{
         this.setState({query:e.target.value});
     }
+
+    handleEnterClick = (e)=>{
+        if(e.keyCode === 13){
+            this.handleClick();
+        }
+    }
+
     handleClick = ()=>{
-        if(this.state.query !== ""){
+        if(this.state.query.trim() !== ""){
             this.props.addQuery(this.state.query);
             this.setState({query:""});
         }
         else{
-            alert("Поле пустое")
+            alert("Empty input")
         }
     }
     render(){
         return(
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="" value={this.state.query} onChange={this.handleChange}/>
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1" onClick={this.handleClick}>Искать</button>
+            <div className="input-group mb-3">
+                <input ref={this.inputRef} type="text" className="form-control" placeholder="" value={this.state.query} onChange={this.handleChange} onKeyDown={this.handleEnterClick}/>
+                <div className="input-group-prepend">
+                    <button className="btn btn-outline-secondary" type="button" id="button-addon1" onClick={this.handleClick}>Find</button>
                 </div>
             </div>
         );

@@ -1,10 +1,16 @@
-import React from "react";
+import React,{ useEffect,useRef } from "react";
 
 const Settings = (props)=>{
+  const inputRef = useRef();
+
+  useEffect(()=>{
+    inputRef.current.focus();
+  },[]);
+
     return(
         <>
         <div>
-          <input type="text" placeholder="Поиск по имени" className="form-control" name="search"  value={props.value}  onChange={props.search}/>
+          <input ref={inputRef} type="text" placeholder="Search by name" className="form-control" name="search"  value={props.value}  onChange={props.search}/>
         </div>
         </>
     );

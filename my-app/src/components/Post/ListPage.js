@@ -12,7 +12,7 @@ const varietyOfPostsPerPage=[5,10,25,50];
 
 class PostListPage extends React.Component {
 
-    state={
+  state={
     currentPage:1,
     postsPerPage:5,
   }

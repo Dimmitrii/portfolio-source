@@ -18,6 +18,7 @@ import PrivateRoute from './PrivateRoute';
 import CoctailsPage from "./components/Coctails/Page";
 import CarsListPage from "./components/Cars/ListPage";
 import Chat from "./components/Chat/Chat";
+import VideoPage from "./webCam";
 
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
         </Switch> */}
         <PrivateRoute path="/coctails" component={CoctailsPage}/>
         <PrivateRoute path="/chat" component={Chat}/>
+        {/* <VideoPage/> */}
         </>
     );
 }

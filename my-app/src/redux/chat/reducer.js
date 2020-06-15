@@ -9,6 +9,10 @@ const initialState = {
     user: "",
 }
 
+// setInterval(()=>{
+//     console.log(initialState.isLoadedChat);
+// },1000)
+
 export const chatReducer = (state = initialState, action)=>{
     switch(action.type){
         case actions.loadingChat:

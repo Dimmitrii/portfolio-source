@@ -1,26 +1,25 @@
 import React,{useState} from 'react';
+import spacesForBigNumbers from "utils/spacesForBigNumbers";
 
 export default function Carsitem(props) {
 
   const [activeUrl,setActiveUrl] = useState(props.url);
 
   return (
-      <div  style={{width:"800px",height:"310px"}}>
-        <div style={{width:"800px",height:"270px"}}>
-          <div style={{height:"60px"}}>
-            <h5 style={{float:"left",width:"500px"}}>{props.title}</h5>
-            <p style={{float:"right",margin:"0 20px 0 0"}}>{props.price}BYN</p>
-            <p style={{float:"right",margin:"0 20px 0 0"}}>{props.year}год</p>
-            <p style={{float:"right",margin:"0 20px 0 0"}}>{props.odometrValue}КМ</p>
+      <div  style={{width:"1000px",height:"270px",margin:"20px 0 40px 0"}}>
+        <p style={{float:"right",margin:"0 20px 0 0"}}>{spacesForBigNumbers(props.price)}USD</p>
+        <p style={{float:"right",margin:"0 20px 0 0"}}>{props.year}year</p>
+        <p style={{float:"right",margin:"0 20px 0 0"}}>{spacesForBigNumbers(`${props.odometrValue}`)}KM</p>
+        <div style={{float:"left"}}>
+          <img src={`${activeUrl}`} width="300px" height="200px" alt=""/>
+          <div onClick={(e)=>{setActiveUrl(e.target.src)}}>
+            <img src={`${props.url}`} width="100px" height="70px" alt="" style={activeUrl===props.url?{opacity:0.5}:null} />
+            <img src={`${props.url1}`} width="100px" height="70px" alt="" style={activeUrl===props.url1?{opacity:0.5}:null}/>
+            <img src={`${props.url2}`} width="100px" height="70px" alt="" style={activeUrl===props.url2?{opacity:0.5}:null} />
           </div>
-          <div style={{float:"left"}}>
-            <img src={`${activeUrl}`} width="200px" height="150px" alt=""/>
-            <div onClick={(e)=>{setActiveUrl(e.target.src)}}>
-              <img src={`${props.url}`} width="66.3px" height="50px" alt="" style={activeUrl===props.url?{opacity:0.5}:null} />
-              <img src={`${props.url1}`} width="66.3px" height="50px" alt="" style={activeUrl===props.url1?{opacity:0.5}:null}/>
-              <img src={`${props.url2}`} width="66.3px" height="50px" alt="" style={activeUrl===props.url2?{opacity:0.5}:null} />
-            </div>
-          </div>
+        </div>
+        <div style={{float:"left"}}>
+          <h5 style={{width:"360px",margin:"0 0 20px 40px"}}>{props.title}</h5>
           <ul style={{listStyle:"none",float:"left"}}>
             <li>{props.engineCapacity}</li>
             <li>{props.transmission}</li>
@@ -32,7 +31,6 @@ export default function Carsitem(props) {
             <li>{props.color}</li>
           </ul>
         </div>
-        <button className="btn btn-primary">Подробне</button>
       </div>
   )
 }

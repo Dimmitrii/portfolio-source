@@ -4,7 +4,7 @@ const CoctailSettings = (props)=>{
     return(
         <>
         <div>
-          <input type="text" placeholder="Поиск по имени" className="form-control" name="search"  value={props.value}  onChange={props.onChange}/>
+          <input type="text" placeholder="Search by name" className="form-control" name="search"  value={props.value}  onChange={props.onChange}/>
         </div>
         </>
     );

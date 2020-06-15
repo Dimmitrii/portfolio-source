@@ -8,7 +8,7 @@ const TechPage = () => {
   return (
     <>
       <Form></Form>
-      <h3>Список техники</h3>
+      <h1>List of tech</h1>
       <TechList />
     </>
   );
