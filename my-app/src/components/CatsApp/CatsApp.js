@@ -78,11 +78,13 @@ class CatsApp extends React.Component {
         return (
             <>
             {this.state.isLoaded?
-            <div>
+            <>
                 <Settings search={this.searchCats} value={this.state.search}/>
-                <ListOfCats cats={currentCats} selectCat={this.selectCat} removeAndUnRemove={this.removeAndUnRemoveCat}/>
-                <SelectedCat selectedCat={this.state.selectedCat}/>
-            </div>
+                <div style={{width:"1356px",margin:"0 auto"}}>
+                    <ListOfCats cats={currentCats} selectCat={this.selectCat} removeAndUnRemove={this.removeAndUnRemoveCat}/>
+                    <SelectedCat selectedCat={this.state.selectedCat}/>
+                </div>
+            </>
             :
             <Spinner/>}
             </>

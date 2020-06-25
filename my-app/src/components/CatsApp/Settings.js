@@ -9,7 +9,7 @@ const Settings = (props)=>{
 
     return(
         <>
-        <div>
+        <div style={{margin:"0 auto",width:"1356px"}}>
           <input ref={inputRef} type="text" placeholder="Search by name" className="form-control" name="search"  value={props.value}  onChange={props.search}/>
         </div>
         </>

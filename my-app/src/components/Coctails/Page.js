@@ -37,7 +37,7 @@ class CoctailsPage extends React.Component {
         const currentCoctails = this.getCoctails();
 
         return (
-            <div>
+            <div style={{width:"1356px",margin:"0 auto"}}>
                 <CoctailSetings onChange={this.searchCoctails} value={this.state.search} />
                 <CoctailsAlphabet/>
                 <CoctailsList coctails={currentCoctails}/>

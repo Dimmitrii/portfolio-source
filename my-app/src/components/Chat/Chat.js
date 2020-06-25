@@ -28,6 +28,10 @@ function Chat(props) {
     }
 
     const addUser = ()=>{
+        if(user.length < 3){
+            alert("Nick must be at least 3 letters");
+            return;
+        }
         props.loadingChat(true);
         setIsLoiding(true);
         console.log(user);

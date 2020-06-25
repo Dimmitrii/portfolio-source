@@ -8,7 +8,7 @@ const ListOfCats = (props)=>{
     });
     return(
         <>
-        <div className="float-left">
+        <div className="float-left" style={{margin:"25px 0 0 0"}}>
             <ul className="list-group">
                 {cats}
             </ul>

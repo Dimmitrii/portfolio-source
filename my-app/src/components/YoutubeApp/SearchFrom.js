@@ -32,7 +32,7 @@ class Searchform extends React.Component{
     }
     render(){
         return(
-            <div className="input-group mb-3">
+            <div className="input-group mb-3" style={{width:"1356px",margin:"0 auto"}}>
                 <input ref={this.inputRef} type="text" className="form-control" placeholder="" value={this.state.query} onChange={this.handleChange} onKeyDown={this.handleEnterClick}/>
                 <div className="input-group-prepend">
                     <button className="btn btn-outline-secondary" type="button" id="button-addon1" onClick={this.handleClick}>Find</button>

@@ -24,7 +24,7 @@ function CarsSettings(props) {
                 <h6 style={{ margin:"20px 0 10px 0" }}>Car label</h6>
                 <select defaultValue="Любая" title="manufacturer" onChange={props.onChange} style={{ width:"260px", height:"30px" }}>
                     <option value="">Any</option>
-                    {props.dict.manufacturer.map(item=><option key={item.id} value={item.id}>{item.name}</option>)}
+                    {props.dict.manufacturer.map(item=><option key={item.id} value={item.name}>{item.name}</option>)}
                 </select>
 
                 <h6 style={{ margin:"20px 0 10px 0" }}>Body type</h6>

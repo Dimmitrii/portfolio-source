@@ -16,7 +16,7 @@ class WeatherApp extends React.Component {
     today:"",
   }
   componentDidMount(){
-    axios.get("https://api.openweathermap.org/data/2.5/forecast?q=Minsk&appid=a94d0a5ac08570add4b47b8da933f247")
+    axios.get("https://api.openweathermap.org/data/2.5/forecast?q=Helsinki&appid=a94d0a5ac08570add4b47b8da933f247")
     .then((response)=>{
       const forecast = response.data.list;
       const days = forecast.filter((item)=>{ return moment(+`${item.dt}000`).format("H:mm") === "21:00"  });

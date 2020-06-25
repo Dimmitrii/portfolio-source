@@ -12,9 +12,9 @@ class Page extends React.Component{
     handleClick = ()=>{
         const id = +this.props.match.params.id;
         new Promise((resolve,reject)=>{
-           const favorite = this.props.addTechToFavoriteAndUnFavorite(id);
-           resolve(favorite);
-           reject("error");
+            const favorite = this.props.addTechToFavoriteAndUnFavorite(id);
+            resolve(favorite);
+            reject("error");
         }).then(()=>{
             const item = this.props.techList.find(item=>item.id === +id);
             const {favorite} = item;
@@ -28,7 +28,7 @@ class Page extends React.Component{
         const item = this.props.techList.find(item=>item.id === +id);
         const {title,price,favorite} = item;
         return(
-            <div className="card">
+            <div className="card" style={{width:"1356px",margin:"0 auto"}}>
                 <h5 className="card-header">{title}</h5>
                 <div className="card-body">
                     <h5 className="card-title">Price {price}$</h5>

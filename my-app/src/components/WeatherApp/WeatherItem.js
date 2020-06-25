@@ -7,7 +7,7 @@ const WeatherItem = (props)=>{
     const src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
     return(
         <div className="item-weather" style={{backgroundColor:"white"}}>
-           <div className="float-left item-content">{moment(+`${date}000`).format("YYYY.MM.DD")}
+        <div className="float-left item-content">{moment(+`${date}000`).format("YYYY.MM.DD")}
             <br/> 
             {moment(+`${date}000`).format(" H:mm")} 
             </div>

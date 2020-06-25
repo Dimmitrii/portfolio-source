@@ -79,20 +79,20 @@ class MemApp extends React.Component {
         });
         console.log(this.state);
         return (
-            <div>
+            <div style={{width:"1356px",margin:"0 auto"}}>
                 <h2>Generator of memes</h2>
-                   <div> 
+                    <div> 
                     <button onClick={this.confirmedNumberOfMemes} type="button" className="btn btn-secondary">Confirm</button> 
                     <input ref={this.inputRef} onKeyDown={this.handleEnterClick} onChange={this.handleChange} type="text" style={{width:200,borderRadius:"5px",height:"38px",border:"none",verticalAlign:"middle"}}   placeholder="Number of memes" name="numberOfMemes"/>
-                   </div>
-                   <div onClick={this.getId}>{memes}</div>
-                   {!!this.state.pickedMemes.length? 
-                   <div> 
+                    </div>
+                    <div onClick={this.getId}>{memes}</div>
+                    {!!this.state.pickedMemes.length? 
+                    <div> 
                     <button onClick={this.handleClick} type="button" className="btn btn-secondary">Make meme</button> 
                     <input onChange={this.handleChange} type="text" style={{width:200,borderRadius:"5px",height:"38px",border:"none",verticalAlign:"middle"}} placeholder="Text1" name="text0"/>
                     <input onChange={this.handleChange} type="text" style={{width:200,borderRadius:"5px",height:"38px",border:"none",verticalAlign:"middle"}} placeholder="Text2" name="text1"/>
-                   </div>: null}
-                   {this.state.complitedMem? <img width="250" height="272" src={this.state.complitedMem} alt=""/>: null}
+                    </div>: null}
+                    {this.state.complitedMem? <img width="250" height="272" src={this.state.complitedMem} alt=""/>: null}
             </div>
         )
     }

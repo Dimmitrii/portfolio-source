@@ -14,7 +14,7 @@ class TechFavorite extends React.Component{
             );
         });
         return(
-            <div style={{margin:"0 auto",width:"991px",height:"48px"}}>
+            <div style={{margin:"0 auto",width:"991px"}}>
                 {favoriteItems.length ? items : <h1 style={{position: "absolute",top: "50%"}}>Add tech to favourite at tech and they will appear here</h1> }
             </div>
         );

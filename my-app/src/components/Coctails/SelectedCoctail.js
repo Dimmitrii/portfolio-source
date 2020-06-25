@@ -12,7 +12,7 @@ const SelectedCoctail = (props)=>{
             {!!props.coctail?
             <div className="float-right">
                 <div className="card">
-                <img src={props.coctail.photo} className="card-img-top" alt=""/>
+                <img style={{width:"700px",height:"700px"}} src={props.coctail.photo} className="card-img-top" alt=""/>
                     <div className="card-body">
                         <p>{props.coctail.name}</p>
                         {props.coctail.ingridients.map((item,index)=><p key={index}>{item.ingridient}{item.measure}</p>)}

@@ -1,7 +1,8 @@
 .navbar {
-    width: 100%;
+    width: 1356px;
     background-color: #555;
     overflow: auto;
+    margin: 0 auto;
   }
   
   /* Navbar links */

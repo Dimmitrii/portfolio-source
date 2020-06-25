@@ -23,25 +23,27 @@ class RegisterForm extends React.Component {
     console.log(this.props);
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-row align-items-center">
-          <div className="col-auto">
-            <input name="name" type="text" className="form-control" placeholder="Имя" onChange={this.handleChange} />
+      <div style={{width:"1356px",margin:"0 auto"}}>
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-row align-items-center">
+            <div className="col-auto">
+              <input name="name" type="text" className="form-control" placeholder="Имя" onChange={this.handleChange} />
+            </div>
+            <div className="col-auto">
+              <input name="lname" type="text" className="form-control" placeholder="Фамилия" onChange={this.handleChange} />
+            </div>
+            <div className="col-auto">
+              <input name="email" type="email" className="form-control" placeholder="Email" onChange={this.handleChange} />
+            </div>
+            <div className="col-auto">
+              <input name="password" type="password" className="form-control" placeholder="Пароль" onChange={this.handleChange} />
+            </div>
+            <div className="col-auto">
+              <button type="submit" className="btn btn-primary">Регистрация</button>
+            </div>
           </div>
-          <div className="col-auto">
-            <input name="lname" type="text" className="form-control" placeholder="Фамилия" onChange={this.handleChange} />
-          </div>
-          <div className="col-auto">
-            <input name="email" type="email" className="form-control" placeholder="Email" onChange={this.handleChange} />
-          </div>
-          <div className="col-auto">
-            <input name="password" type="password" className="form-control" placeholder="Пароль" onChange={this.handleChange} />
-          </div>
-          <div className="col-auto">
-            <button type="submit" className="btn btn-primary">Регистрация</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     )
   }
 }

@@ -12,7 +12,7 @@ const WeatherToday = (props)=>{
     const src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
     return(
         <div className="contaner">
-            <div>Minsk,BY<br/>{moment(+`${dt}000`).format("H:mm")}</div>
+            <div style={{width:"730px"}}>Minsk,BY<br/>{moment(+`${dt}000`).format("H:mm")}</div>
             <div className="center"><img src={src} alt=""/><br/>{main}<br/>{tempConverter(temp)}</div>
             <div className="item-weather"><div className="float-left dr">{windDiretion(deg)}</div><div className="float-right sp">{speed}</div></div>
         </div>
