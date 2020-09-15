@@ -1,20 +1,29 @@
 let webSocket;
 
-const reloadWebsocket = ()=>{
+const reloadWebsocket = (dispatch)=>{
+    // console.log(dispatch)
     webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
-    webSocket.addEventListener("close",()=>{
-        reloadWebsocket();
-    });
-}
-const dispatchMessage = (dispatch)=>{
     webSocket.addEventListener("message",(message)=>{
+        console.log("ff");
         console.log(JSON.parse(message.data));
         dispatch(JSON.parse(message.data));
     });
+    console.log(webSocket);
+    webSocket.addEventListener("close",()=>{
+        reloadWebsocket(dispatch);
+    });
 }
+// setInterval(()=>{
+//     console.log(webSocket);
+// },1000)
+// const dispatchMessage = (dispatch)=>{
+//     webSocket.addEventListener("message",(message)=>{
+//         console.log(JSON.parse(message.data));
+//         dispatch(JSON.parse(message.data));
+//     });
+// }
 
 const load = (dispatch,isLoaded)=>{
-    dispatchMessage(dispatch);
     webSocket.send(JSON.stringify({type:"GET_MESSAGES"}));
     webSocket.send(JSON.stringify({type:"GET_USERS"}));
     dispatch({type:actions.loadingChat,payload:isLoaded});
@@ -33,7 +42,7 @@ export const actions = {
 
 export const loadingChat = (isLoaded) => async (dispatch)=>{
     // webSocket = new WebSocket("wss://hidden-brushlands-96911.herokuapp.com");
-    reloadWebsocket();
+    reloadWebsocket(dispatch);
     if(webSocket.readyState === 1){
         console.log("load instantly");
         load(dispatch,isLoaded);
