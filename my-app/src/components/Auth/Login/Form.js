@@ -3,7 +3,7 @@ import withAuthMethods from '../WithAuthMethods';
 
 class LoginForm extends React.Component {
   state = {
-    email: '',
+    name: '',
     password: '',
   };
 
@@ -14,7 +14,13 @@ class LoginForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.signIn(this.state);
+    if(this.state.name.length < 3){
+      alert("Name must have at least 3 characters")
+      return;
+    }
+    localStorage.setItem("name",this.state.name);
+    localStorage.setItem("token",Math.round(Math.random()*10000000));
+    this.props.history.push("/");
   }
 
   render() {
@@ -23,13 +29,13 @@ class LoginForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div className="form-row align-items-center">
           <div className="col-auto">
-            <input name="email" type="email" className="form-control" placeholder="Email" onChange={this.handleChange} />
+            <input name="name" className="form-control" placeholder="Name" onChange={this.handleChange} />
           </div>
           <div className="col-auto">
-           <input name="password" type="password" className="form-control" placeholder="Пароль" onChange={this.handleChange} />
+           {/* <input name="password" type="password" className="form-control" placeholder="Пароль" onChange={this.handleChange} /> */}
           </div>
           <div className="col-auto">
-            <button type="submit" className="btn btn-primary">Войти</button>
+            <button type="submit" className="btn btn-primary">Login</button>
           </div>
         </div>
       </form>

@@ -19,7 +19,7 @@ const SelectedCoctail = (props)=>{
                         <p className="card-text">{props.isEnglish?props.coctail.description:props.russianDescription}</p>
                     </div>
                     <div>
-                    <button type="button" className="btn btn-info" onClick={()=>{props.translate(props.coctail.description)}}>{props.isEnglish?"Перевести на русский":"Перевести на английский"}</button>
+                    <button type="button" className="btn btn-info" onClick={()=>{props.translate(props.coctail.description)}}>{props.isEnglish?"Перевести на русский":"Translate in English"}</button>
                     </div>
                 </div>
             </div> 

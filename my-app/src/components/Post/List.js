@@ -12,8 +12,8 @@ const PostList = (props) => {
         <div key={post.id} className="mb-3">
           <h3>{post.title}</h3>
           <p>{shortDescription(post.body)}</p>
-          <button onClick={() => props.onDelete(post.id)} className="btn btn-danger mr-2">Удалить</button>
-          <Link to={`/posts/${post.id}`} className="btn btn-primary">Подробнее</Link>
+          <button onClick={() => props.onDelete(post.id)} className="btn btn-danger mr-2">Delete</button>
+          <Link to={`/posts/${post.id}`} className="btn btn-primary">About</Link>
         </div>
       ))}
     </div>

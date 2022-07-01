@@ -16,9 +16,9 @@ export const fetchPosts = () => {
   return async (dispatch) => {
     try {
       const { data: posts } = await axios(`${config.apiUrl}/posts`,{
-        // headers:{
-        //   origin: "https://jsonplaceholder.typicode.com",
-        // }
+        headers:{
+          origin: "https://jsonplaceholder.typicode.com",
+        }
       })
       dispatch({ type: actions.fetchAll, payload: posts });
     } catch (error) {

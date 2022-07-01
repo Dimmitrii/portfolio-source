@@ -39,17 +39,17 @@ class Form extends React.Component {
     return (
         <>
             <div className="form-group row">
-              <div className="col-sm-2 col-form-label">Название поста</div>
+              <div className="col-sm-2 col-form-label">Post title</div>
               <div className="col-sm-10">
-                  <input type="text" placeholder="Название" className="form-control" name="title" onChange={this.handleChange} value={this.state.title}/>
+                  <input type="text" placeholder="Title" className="form-control" name="title" onChange={this.handleChange} value={this.state.title}/>
               </div>
             </div>
             <div className="form-group row">
-              <div className="col-sm-2 col-form-label">Тело поста</div>
+              <div className="col-sm-2 col-form-label">Post body</div>
               <div className="col-sm-10">
-                  <input type="text" placeholder="Тело" className="form-control" name="body" onChange={this.handleChange} value={this.state.body} />
+                  <input type="text" placeholder="Body" className="form-control" name="body" onChange={this.handleChange} value={this.state.body} />
               </div>
-              <input type="submit" className="btn btn-primary float-right" value={this.props.isEdit? "Изменить" :"Добавить"} onClick={this.handleClick}/>
+              <input type="submit" className="btn btn-primary float-right" value={this.props.isEdit? "Change" :"Add"} onClick={this.handleClick}/>
             </div>
         </>
     );

@@ -8,6 +8,8 @@ import { fetchPosts, deletePost } from '../../redux/post/actions';
 import PostPagination from "./Pagination";
 import getNumbersForPagination from "../../utils/getNumbersForPagination";
 
+import Spinner from '../common/Spinner';
+
 const varietyOfPostsPerPage=[5,10,25,50];
 
 class PostListPage extends React.Component {
@@ -54,12 +56,15 @@ class PostListPage extends React.Component {
     const pagination = <PostPagination pages={getNumbersForPagination(this.props.posts.length,this.state.postsPerPage,this.state.currentPage)} varietyOfPostsPerPage={varietyOfPostsPerPage} onClick={this.handlePaginationClick} postsPerPage={this.state.postsPerPage} currentPage={this.state.currentPage}/>
 
     return (
-      <>
-      <Form/>
-      {pagination}
-      <PostList posts={currentPosts} onDelete={deletePost} />
-      {pagination}
-      </>
+      <div style={{maxWidth:"1356px",margin:"0 auto"}}>
+        {this.props.isLoaded ?
+        <>
+          <Form/>
+          {pagination}
+          <PostList posts={currentPosts} onDelete={deletePost} />
+          {pagination}
+        </> : <Spinner/>}
+      </div>
     );
   }
 }

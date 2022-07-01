@@ -18,6 +18,7 @@ function Chat(props) {
         console.log(props.isLoaded);
         if(!props.isLoaded){
             inputRef.current.focus();
+            setUser(localStorage.getItem("name"))
         }
     },[]);
 

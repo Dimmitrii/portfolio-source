@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 
 import { fetchPost,toggleEditPost } from '../../redux/post/actions';
 import Form from "./Form";
+import Spinner from '../common/Spinner';
 
 class PostSinglePage extends React.Component {
 
   // state = {
-  //   changingPost: false,
+  //   loaded: false,
   // }
 
   handleClickEditButton = ()=>{
@@ -30,22 +31,24 @@ class PostSinglePage extends React.Component {
 
     return (
       <>
-      <div className="mb-3" onClick={this.handleClickExitButton}>
-          <Link to="/posts" className="btn btn-sm btn-outline-primary">Назад</Link>
-      </div>
-      {this.props.isEdit?
-      <Form selectedPost={selectedPost}/>
-      :
-      <div>
-        <div className="card">
-          <h5 className="card-header">{selectedPost.title}</h5>
-          <div className="card-body">
-            <h5 className="card-title">{selectedPost.body}</h5>
-            <p className="card-text"></p>
-            <button  className="btn btn-primary" onClick={this.handleClickEditButton}>Изменить пост</button>
-          </div>
+        {!!selectedPost.title ? <div style={{maxWidth:"1356px", margin:"0 auto"}}>
+        <div className="mb-3" onClick={this.handleClickExitButton}>
+            <Link to="/posts" className="btn btn-sm btn-outline-primary">Go back</Link>
         </div>
-      </div>}
+        {this.props.isEdit?
+        <Form selectedPost={selectedPost}/>
+        :
+        <div>
+          <div className="card">
+            <h5 className="card-header">{selectedPost.title}</h5>
+            <div className="card-body">
+              <h5 className="card-title">{selectedPost.body}</h5>
+              <p className="card-text"></p>
+              <button  className="btn btn-primary" onClick={this.handleClickEditButton}>Change post</button>
+            </div>
+          </div>
+        </div>}
+        </div>: <Spinner/>}
       </>
     );
   }

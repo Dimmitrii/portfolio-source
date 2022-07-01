@@ -10,6 +10,7 @@ class Form extends React.Component {
   }
   handleChange = (e)=>{
     const {value,name} = e.target;
+    if(name === "price" && isNaN(+value)) return;
     this.setState({[name]:value})
   }
   handleClick= (e)=>{

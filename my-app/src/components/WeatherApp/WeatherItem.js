@@ -12,7 +12,7 @@ const WeatherItem = (props)=>{
             {moment(+`${date}000`).format(" H:mm")} 
             </div>
             <div className="float-left i-i"><img src={src} alt=""/></div>
-            <div className="float-right item-content">{tempConverter(temp)}</div>
+            <div className="float-right item-content">{tempConverter(temp)} {`\u2103`}</div>
         </div>
     )
 }

@@ -16,11 +16,11 @@ class WeatherApp extends React.Component {
     today:"",
   }
   componentDidMount(){
-    axios.get("https://api.openweathermap.org/data/2.5/forecast?q=Helsinki&appid=a94d0a5ac08570add4b47b8da933f247")
+    axios.get("https://api.openweathermap.org/data/2.5/forecast?q=Warsaw&appid=a94d0a5ac08570add4b47b8da933f247")
     .then((response)=>{
       const forecast = response.data.list;
-      const days = forecast.filter((item)=>{ return moment(+`${item.dt}000`).format("H:mm") === "21:00"  });
-      this.setState({days,isData:true,today:forecast[0]});
+      const days = forecast.filter((item)=>{ return moment(+`${item.dt}000`).format("H:mm") === "20:00"  });
+      this.setState({days,isData:true,today:forecast[1]});
     })
     .catch((error)=>{
       console.log(error)
@@ -31,9 +31,9 @@ class WeatherApp extends React.Component {
     return (
       <>
         {this.state.isData? 
-        <div className="App container pt-3">
-          <div className="row">
-            <div className="col-8 offset-2">
+        <div style={{width:"1356px",margin:"20px auto"}}>
+          <div>
+            <div style={{width:"730px",margin:"0 auto"}}>
               <WeatherToday forecast={this.state.today}/>
               <WeatherOther forecast={this.state.days}/>
             </div>
